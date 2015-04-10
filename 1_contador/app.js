@@ -8,13 +8,15 @@ var App = React.createClass({
 			secondsElapsed: 0,
 			minutesElapsed: 0
 		};
+	},
+
 	componentDidMount: function() {
 		this.interval = setInterval(this.onTick, 100);
 	},
 
 	onTick: function() {
 		var seconds = this.state.secondsElapsed,
-				minutes = this.state.minutesElapsed;
+			minutes = this.state.minutesElapsed;
 
 		minutes += Math.trunc(seconds / 60);
 
@@ -22,7 +24,7 @@ var App = React.createClass({
 
 		seconds = seconds + 1;
 
-		this.setState({ 
+		this.setState({
 			secondsElapsed: seconds,
 			minutesElapsed: minutes
 		});
@@ -45,10 +47,9 @@ var App = React.createClass({
 		return (
 			<div>
 				<div>
-					Han pasado: 
-					{this.state.minutesElapsed} minuto(s) {' '}
-					{this.state.secondsElapsed} segundo(s)
-				</div>
+          Han pasado: {this.state.minutesElapsed} minuto(s) {' '}
+          {this.state.secondsElapsed} segundo(s)
+        </div>
 
 				<div>
 					<input ref="inputTiempo" type="text" />
@@ -56,7 +57,7 @@ var App = React.createClass({
 				</div>
 			</div>
 		);
-	}		
+	}
 });
 
 React.render(<App />, document.getElementById('app'));
