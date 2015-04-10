@@ -1,0 +1,20 @@
+{
+  "name": "2_lista-usuarios",
+  "version": "1.0.0",
+  "description": "Aplicacion que lista usuarios",
+  "main": "App.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BJR Matos <bjrmatos@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "babel-loader": "^5.0.0",
+    "webpack": "^1.8.2",
+    "webpack-dev-server": "^1.8.0"
+  }
+}
