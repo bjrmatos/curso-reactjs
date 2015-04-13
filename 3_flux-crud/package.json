@@ -1,0 +1,23 @@
+{
+  "name": "3_flux-crud",
+  "version": "1.0.0",
+  "description": "Flux Crud",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BJR Matos <bjrmatos@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "flux": "^2.0.1",
+    "object-assign": "^2.0.0",
+    "react": "^0.12.2"
+  },
+  "devDependencies": {
+    "babel-core": "^5.0.12",
+    "babel-loader": "^5.0.0",
+    "webpack": "^1.8.4",
+    "webpack-dev-server": "^1.8.0"
+  }
+}
