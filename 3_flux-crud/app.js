@@ -7,7 +7,8 @@ var React = require('react'),
 
 function getStateFromStore() {
   return {
-    persons: PersonStore.getPersons()
+    persons: PersonStore.getPersons(),
+    selectedPerson: PersonStore.getSelectedPerson()
   };
 }
 
@@ -33,7 +34,7 @@ var App = React.createClass({
       <main>
         <h1>Flux - CRUD</h1>
 
-        <PersonForm />
+        <PersonForm key={+new Date()} selectedPerson={this.state.selectedPerson} />
         <PersonList persons={this.state.persons} />
       </main>
     );

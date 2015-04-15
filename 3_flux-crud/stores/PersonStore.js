@@ -1,6 +1,7 @@
 'use strict';
 
-var assign = require('object-assign'),
+var _ = require('lodash'),
+    assign = require('object-assign'),
     EventEmitter = require('events').EventEmitter,
     AppDispatcher = require('../dispatcher/AppDispatcher'),
     PersonConstants = require('../constants/PersonConstants');
@@ -8,6 +9,8 @@ var assign = require('object-assign'),
 var CHANGE_EVENT = 'change';
 
 var _persons = [];
+
+var _selectedPerson = null;
 
 var PersonStore = assign({}, EventEmitter.prototype, {
   emitChange: function() {
@@ -25,13 +28,50 @@ var PersonStore = assign({}, EventEmitter.prototype, {
   // GETTERS
   getPersons: function() {
     return _persons;
+  },
+
+  getSelectedPerson: function() {
+    return _selectedPerson;
   }
 });
 
 AppDispatcher.register(function(action) {
+  var currentPersonIndex;
+
   switch (action.type) {
     case PersonConstants.INSERT_PERSON:
+      action.person.id = Date.now();
       _persons.push(action.person);
+      _selectedPerson = null;
+      PersonStore.emitChange();
+      break;
+
+    case PersonConstants.REMOVE_PERSON:
+      currentPersonIndex = _.findIndex(_persons, function(person) {
+        return person.id === action.pid;
+      });
+
+      _persons.splice(currentPersonIndex, 1);
+      _selectedPerson = null;
+      PersonStore.emitChange();
+      break;
+
+    case PersonConstants.UPDATE_PERSON:
+      currentPersonIndex = _.findIndex(_persons, function(person) {
+        return person.id === action.pid;
+      });
+
+      _persons[currentPersonIndex] = action.person;
+      _selectedPerson = null;
+      PersonStore.emitChange();
+      break;
+
+    case PersonConstants.EDIT_PERSON:
+      currentPersonIndex = _.findIndex(_persons, function(person) {
+        return person.id === action.pid;
+      });
+
+      _selectedPerson = _persons[currentPersonIndex];
       PersonStore.emitChange();
       break;
   }
