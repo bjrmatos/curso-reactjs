@@ -1,0 +1,22 @@
+{
+  "name": "4_router",
+  "version": "1.0.0",
+  "description": "Testear la funcionalidad de react-router",
+  "main": "app.js",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.config.js --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "BJR Matos <bjrmatos@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-core": "^5.1.9",
+    "babel-loader": "^5.0.0",
+    "webpack": "^1.8.4",
+    "webpack-dev-server": "^1.8.0"
+  },
+  "dependencies": {
+    "react": "^0.12.2",
+    "react-router": "^0.12.4"
+  }
+}
